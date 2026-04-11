@@ -1,38 +1,53 @@
 package GasStation;
 
 
+import java.util.ArrayDeque;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Deque;
 
 public class Main {
-    public static void main(String[] args){
-        int[] gas = {1,2,3,4,5};
-        int[] cost = {3,4,5,1,2};
-        //Output: 3
-        Main main = new Main();
-        System.out.println(main.Solution(gas,cost));
+    public static void main(String[] args) {
+        MinStack minStack = new MinStack();
 
-    }
+        minStack.push(2);
 
-    public int Solution(int[] gas, int[] cost) {
-        if(Arrays.stream(gas).sum() < Arrays.stream(cost).sum()){
-            return -1;
-        }
-
-        int[] diff = new int[gas.length];
-
-        for(int i = 0; i < diff.length; i++){
-            diff[i] = gas[i] - cost[i];
-        }
-
-        int startIndex = 0;
-        int currentTank = 0;
-        for(int j = 0; j < diff.length; j++){
-            currentTank = currentTank + diff[j];
-            if(currentTank<0){
-                startIndex=j+1;
-                currentTank = 0;
-            }
-        }
-        return startIndex;
     }
 }
+
+class MinStack {
+    Deque<Integer> mainStack = new ArrayDeque<>();
+    Deque<Integer> minStack = new ArrayDeque<>();
+
+    public MinStack() {
+
+    }
+
+    public void push(int val) {
+        mainStack.push(val);
+        if(minStack.isEmpty()){
+            minStack.push(val);
+        }else{
+            int current = minStack.peek();
+            if(current > val){
+                minStack.push(val);
+            }else {
+                minStack.push(current);
+            }
+        }
+    }
+
+    public void pop() {
+        mainStack.pop();
+        minStack.pop();
+    }
+
+    public int top() {
+        return mainStack.peek();
+    }
+
+    public int getMin() {
+        return minStack.peek();
+    }
+}
+
