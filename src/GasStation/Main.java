@@ -1,32 +1,47 @@
 package GasStation;
 
 import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
 
 public class Main {
     public static void main(String[] args) {
-        int[] nums = {-4,-1,0,3,10};
+        String s = "abcabcbb";
+
         Solution solution = new Solution();
-        System.out.println(solution.sortedSquares(nums));
+        System.out.println(solution.lengthOfLongestSubstring(s));
     }
 }
 
 class Solution {
-    public int[] sortedSquares(int[] nums) {
-        int[] result = new int[nums.length];
-
+    public int lengthOfLongestSubstring(String s) {
         int left = 0;
-        int right = nums.length - 1;
+        int right = 0;
+        int maxLength = 0;
+        Set<Character> window = new HashSet<>();
 
-        for(int i = nums.length - 1; i >= 0 ; i--){
-            if(Math.pow(nums[left], 2 ) >Math.pow(nums[right], 2 )){
-                result[i] = (int) Math.pow(nums[left], 2 );
+        while (right < s.length()){
+            char c = s.charAt(right);
+
+            if(!window.contains(c)){
+                window.add(c);
+                int currentSize = right - left + 1; // почему +1
+
+                if(maxLength < currentSize){
+                    maxLength = currentSize;
+                }
+
+                right++;
+
+                }
+
+            else {
+                char leftChar = s.charAt(left);
+                window.remove(leftChar);
                 left++;
-            } else{
-                result[i] = (int) Math.pow(nums[right], 2 );
-                right--;
             }
         }
 
-        return result;
+        return maxLength;
     }
 }
