@@ -1,47 +1,67 @@
 package GasStation;
 
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 public class Main {
     public static void main(String[] args) {
-        String s = "abcabcbb";
-
+        String s = "ADOBECODEBANC", t = "ABC";
         Solution solution = new Solution();
-        System.out.println(solution.lengthOfLongestSubstring(s));
+        System.out.println(solution.minWindow(s,t));
     }
 }
 
 class Solution {
-    public int lengthOfLongestSubstring(String s) {
+    public String minWindow(String s, String t) {
         int left = 0;
         int right = 0;
-        int maxLength = 0;
-        Set<Character> window = new HashSet<>();
+        int minLength = Integer.MAX_VALUE;
+        int startIndex = 0;
 
-        while (right < s.length()){
+        Map<Character, Integer> targetMap = new HashMap<>();
+        for(char c : t.toCharArray()){
+            targetMap.put(c, targetMap.getOrDefault(c,0)+1);//этот метод подсмотрел в инете
+        }
+        int required = targetMap.size();
+        int formed = 0;
+
+        Map<Character, Integer> windowMap = new HashMap<>();
+
+        while(right < s.length()){
             char c = s.charAt(right);
 
-            if(!window.contains(c)){
-                window.add(c);
-                int currentSize = right - left + 1; // почему +1
+            windowMap.put(c, windowMap.getOrDefault(c,0)+1);
 
-                if(maxLength < currentSize){
-                    maxLength = currentSize;
-                }
-
-                right++;
-
-                }
-
-            else {
-                char leftChar = s.charAt(left);
-                window.remove(leftChar);
-                left++;
+            if(targetMap.containsKey(c) && targetMap.get(c).equals(windowMap.get(c))){
+                formed++;
             }
+
+            while(left<=right && formed == required){
+
+                int currentLength = right - left + 1;
+                if(currentLength < minLength){
+                    minLength = currentLength;
+                    startIndex = left;
+                }
+
+                char leftChar = s.charAt(left);
+
+                windowMap.put(leftChar, windowMap.get(leftChar)-1);
+
+                if (targetMap.containsKey(leftChar) && windowMap.get(leftChar) < targetMap.get(leftChar)){
+                    formed--;
+                }
+
+                left++;
+
+            }
+
+            right++;
         }
 
-        return maxLength;
+        if(minLength == Integer.MAX_VALUE){
+            return "";
+        }else {
+            return s.substring(startIndex, startIndex+minLength);
+        }
     }
 }
