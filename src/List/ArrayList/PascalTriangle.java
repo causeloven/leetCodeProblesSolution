@@ -1,7 +1,6 @@
 package List.ArrayList;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class PascalTriangle {
     public List<List<Integer>> generate(int numRows) {
