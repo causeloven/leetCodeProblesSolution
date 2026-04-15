@@ -1,14 +1,15 @@
 package GasStation;
 
 import List.ArrayList.PascalTriangle;
+import Set.ContainsDuplicate217;
 
 public class Main {
     public static void main(String[] args) {
-        PascalTriangle solution = new PascalTriangle();
+        ContainsDuplicate217 containsDuplicate217 = new ContainsDuplicate217();
 
-        int rows = 5;
+        int[] nums = new int[]{1,2,3,3};
 
-        solution.generate(5);
+        System.out.println(containsDuplicate217.containsDuplicate(nums));
 
     }
 }
