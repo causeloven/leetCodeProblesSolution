@@ -1,12 +1,12 @@
-package GasStation;
+package StreamApi;
 
 import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 import java.util.stream.Collectors;
 
-public class Main {
-    public static void main(String[] args) {
+public class introductionToStreamAPI {
+    public static void introductionToStreamAPI() {
 
         List<Integer> salaries = Arrays.asList(50000, 120000, 80000, 150000, 90000);
 
@@ -46,4 +46,3 @@ public class Main {
 
     }
 }
-
