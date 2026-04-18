@@ -1,4 +1,4 @@
-package Collections.Stack;
+package Leetcode.Collections.Stack;
 
 import java.util.ArrayDeque;
 import java.util.Deque;
