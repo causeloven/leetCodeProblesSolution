@@ -1,4 +1,4 @@
-package Leetcode;
+package Leetcode.TwoPointers;
 
 public class MoveZeroes283{
     public void moveZeroes(int[] nums) {
