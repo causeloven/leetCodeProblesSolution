@@ -2,6 +2,8 @@ package Interview150;
 
 public class RotateArray189 {
     public void rotate(int[] nums, int k) {
+        k = k % nums.length;
+
         rot(0,nums.length-1, nums);
         rot(0, k-1, nums);
         rot(k, nums.length-1, nums );
