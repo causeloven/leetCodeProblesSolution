@@ -1,6 +1,7 @@
 package Leetcode.odin;
 
 import java.util.Arrays;
+import java.util.HashMap;
 
 public class RotateFunction396 {
     public int maxRotateFunction(int[] nums) {
