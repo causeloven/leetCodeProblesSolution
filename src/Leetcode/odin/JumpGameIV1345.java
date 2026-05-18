@@ -4,7 +4,7 @@ import java.util.*;
 
 public class JumpGameIV1345 {
     public int minJumps(int[] arr) {
-
+//commit
         HashMap<Integer, List<Integer>> hashMap = new HashMap<>();
 
         for(int i = 0; i < arr.length; i++){
