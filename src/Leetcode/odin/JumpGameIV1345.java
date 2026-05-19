@@ -45,7 +45,7 @@ public class JumpGameIV1345 {
                 for(int next : sameValues){
                     if(dist[next] == -1){
                         dist[next] = dist[curr] + 1;
-                        queue.add(next)
+                        queue.add(next);
                     }
                 }
                 hashMap.remove(arr[curr]);
