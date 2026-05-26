@@ -1,4 +1,4 @@
-package foodTracker;
+package foodTracker.old;
 
 import java.util.Scanner;
 

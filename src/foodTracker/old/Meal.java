@@ -1,4 +1,4 @@
-package foodTracker;
+package foodTracker.old;
 
 public class Meal {
 
