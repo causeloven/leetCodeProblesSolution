@@ -1,5 +1,7 @@
 package foodTracker;
 
+import java.util.Objects;
+
 public class FoodEntry {
 
     private String date;
@@ -15,6 +17,26 @@ public class FoodEntry {
     @Override
     public String toString(){
         return date + " | " + product + " | " + calories + " ккал";
+    }
+
+    public String toFileString(){
+        return date + ";" + product + ";" + calories;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if(this == obj) return true;
+        if(obj == null || getClass() != obj.getClass()) return false;
+        FoodEntry other = (FoodEntry) obj;
+
+        return calories == ((FoodEntry) obj).calories &&
+                date.equals(((FoodEntry) obj).getDate()) &&
+                product.equals(((FoodEntry) obj).getProduct());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(date,product,calories);
     }
 
     public int getCalories() {
