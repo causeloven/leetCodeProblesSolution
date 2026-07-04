@@ -6,7 +6,7 @@ public class Sum3Closest16 {
     public int threeSumClosest(int[] nums, int target) {
         Arrays.sort(nums);
         int n = nums.length;
-        int bestSum = Integer.MAX_VALUE;
+        int bestSum = nums[0]+nums[1]+nums[2];
 
         for(int i = 0; i < n-2; i++){
             int left = i + 1;
